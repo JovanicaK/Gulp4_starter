@@ -15,5 +15,8 @@
   "bugs": {
     "url": "https://github.com/JovanicaK/Gulp4_starter/issues"
   },
-  "homepage": "https://github.com/JovanicaK/Gulp4_starter#readme"
+  "homepage": "https://github.com/JovanicaK/Gulp4_starter#readme",
+  "devDependencies": {
+    "gulp": "^4.0.2"
+  }
 }
