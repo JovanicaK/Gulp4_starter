@@ -1,0 +1,38 @@
+/**
+iconfont Webfont
+*/
+@font-face {
+	font-family: 'iconfont';
+	src: url('../fonts/iconfont.woff2?1688465027394') format('woff2'),
+		url('../fonts/iconfont.woff?1688465027394') format('woff');
+	font-weight: normal;
+	font-style: normal;
+}
+
+[class^='icon-']::before,
+[class*=' icon-']::before {
+	font-family: 'iconfont';
+	display: inline-block;
+	vertical-align: middle;
+	line-height: 1;
+	font-weight: normal;
+	font-style: normal;
+	text-decoration: inherit;
+	font-size: inherit;
+	text-transform: none;
+	text-rendering: optimizeLegibility;
+	-webkit-font-smoothing: antialiased;
+	-moz-osx-font-smoothing: grayscale;
+}
+
+/*
+Glyphs list
+*/
+
+.icon-car::before {
+	content: '\ea01';
+}
+
+.icon-facebook::before {
+	content: '\ea02';
+}

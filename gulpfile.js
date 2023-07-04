@@ -1,10 +1,9 @@
-
 const {
     src,
     dest,
     parallel,
     series,
-    watch
+    watch,
 } = require('gulp');
 
 // Load plugins
@@ -20,6 +19,7 @@ const browsersync = require('browser-sync').create();
 const sassLint = require('gulp-sass-lint');
 const consolidate = require('gulp-consolidate');
 const iconfont = require('gulp-iconfont');
+var svgicons2svgfont = require('gulp-svgicons2svgfont');
 
 // JS function 
 
@@ -48,9 +48,6 @@ function css() {
         .pipe(autoprefixer({
             overrideBrowserslist: ['last 2 versions'],
             cascade: false
-        }))
-        .pipe(rename({
-            extname: '.min.css'
         }))
         .pipe(cssnano())
         .pipe(dest('./assets/css/'))
@@ -99,13 +96,13 @@ function icons() {
         centerHorizontally: true
     }))
     .on('glyphs', function (glyphs, options) {
-        gulp.src('src/scss/config/iconfont-template/_iconfont.scss')
+        return src('src/scss/config/iconfont-template/_iconfont.scss')
             .pipe(consolidate('underscore', {
                 glyphs: glyphs,
                 fontName: options.fontName,
                 fontDate: new Date().getTime()
             }))
-            .pipe(gulp.dest('src/scss/config'));
+            .pipe(dest('src/scss/config'));
     })
     .pipe(dest('assets/fonts'));
 }
@@ -133,4 +130,5 @@ function browserSync() {
 // Tasks to define the execution of the functions simultaneously or in series
 
 exports.watch = parallel(watchFiles, browserSync);
-exports.default = parallel(icons, html, js, css, img);
+exports.default = parallel( html, js, css, img);
+exports.icons = icons;
